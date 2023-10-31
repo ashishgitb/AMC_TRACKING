@@ -1,0 +1,149 @@
+﻿@model IEnumerable<AMC_Tracker.Models.Contract>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<html>
+<body>
+<h2 style="margin-bottom:40px;">Index</h2>
+
+@if (TempData["InfoMessage"] != null)
+{
+    <div class="alert alert-info">
+        <strong>Info :</strong> @TempData["InfoMessage"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span>&times;</span>
+        </button>
+    </div>
+}
+else if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        <strong>Success !</strong> @TempData["SuccessMessage"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span>&times;</span>
+        </button>
+    </div>
+}
+
+else if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        <strong>Error</strong> @TempData["ErrorMessage"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span>&times;</span>
+        </button>
+    </div>
+}
+
+<div style="display:flex; justify-content:space-between;">
+    <p style="margin-top 10px">
+        @Html.ActionLink("Create New Contract", "Create", null, new { @class = "btn btn-primary" })
+    </p>
+
+    <div>
+        @using (Html.BeginForm("Index", "Contract", FormMethod.Get))
+        {
+            <table>
+                <tr>
+                    <td>
+                        <span><b>Search By:</b></span>
+                        @Html.RadioButton("SearchBy", "ContractNumber", true)
+                        <text> Contract ID </text>
+                        @Html.RadioButton("SearchBy", "VendorName")
+                        <text> Vendor Name </text>
+                        @Html.RadioButton("SearchBy", "DateOfContract")
+                        <text> Date of Contract </text>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="display:flex;gap:10px">
+                        @Html.TextBox("SearchValue", null, new { Class = "form-control", placeholder = "Enter Here" })
+                    </td>
+
+                    <td>
+                        <input type="submit" value="Search" class="btn btn-success" />
+                    </td>
+                </tr>
+            </table>
+        }
+    </div>
+</div>
+<br />
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ContractNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VendorName)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.VendorMobileNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VendorEmailId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOfContract)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.EndDate)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.RevisedAmount)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContractNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VendorName)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.VendorMobileNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VendorEmailId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfContract)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDate)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.RevisedAmount)
+            </td>
+
+            <td>
+                <div style="display:flex">
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ContractNumber }, new { @class = "btn-sm btn-primary" }) &nbsp;&nbsp;
+                    @Html.ActionLink("Details", "Details", new { id = item.ContractNumber }, new { @class = "btn-sm btn-success" })&nbsp;&nbsp;
+                    @Html.ActionLink("Delete", "#", null, new { @class = "btn-sm btn-danger", data_toggle = "modal", data_target = "#deleteModal-" + item.ContractNumber })
+
+                </div>
+            </td>
+        </tr>
+    }
+
+</table>
+    
+</body>
+</html>
+
+
+

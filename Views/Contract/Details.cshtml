@@ -1,0 +1,83 @@
+﻿@model AMC_Tracker.Models.Contract
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        <strong>Error !</strong> @TempData["ErrorMessage"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span>&times;</span>
+        </button>
+    </div>
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="mb-0">Contract Details</h4>
+            </div>
+            <div class="card-body">
+                <dl class="row">
+                    <dt class="col-sm-3">Contract Number</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.ContractNumber)</dd>
+
+                    <dt class="col-sm-3">Vendor Name</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.VendorName)</dd>
+
+                    <dt class="col-sm-3">Vendor Telephone Number</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.VendorTelephoneNumber)</dd>
+
+                    <dt class="col-sm-3">Vendor Mobile Number</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.VendorMobileNumber)</dd>
+
+                    <dt class="col-sm-3">Vendor Email ID</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.VendorEmailId)</dd>
+
+                    <dt class="col-sm-3">Date of Contract</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.DateOfContract)</dd>
+
+                    <dt class="col-sm-3">Start Date</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.StartDate)</dd>
+
+                    <dt class="col-sm-3">End Date</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.EndDate)</dd>
+
+                    <dt class="col-sm-3">Original Amount</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.OriginalAmount)</dd>
+
+                    <dt class="col-sm-3">Revised Amount</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.RevisedAmount)</dd>
+
+                    <dt class="col-sm-3">AMC Type</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.AmcType)</dd>
+
+                    <dt class="col-sm-3">Budget Type</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.BudgetType)</dd>
+
+                    <dt class="col-sm-3">Payment Type</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.PaymentType)</dd>
+
+                    <dt class="col-sm-3">Service Type</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.ServiceType)</dd>
+                </dl>
+            </div>
+            <div class="card-footer text-right">
+                @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })
+            </div>
+        </div>
+    </div>
+</body>
+
+
+</html>

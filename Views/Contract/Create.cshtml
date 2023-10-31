@@ -1,0 +1,147 @@
+﻿@model AMC_Tracker.Models.Contract
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        <strong>Error!</strong> @TempData["ErrorMessage"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span>&times;</span>
+        </button>
+    </div>
+}
+
+
+<html>
+
+<body>
+    
+
+
+
+    <h1>Create Contract</h1>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ContractNumber)
+            @Html.EditorFor(model => model.ContractNumber, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.ContractNumber, "", new { @class = "error-message" })
+        </div>
+
+        <div class="form-group">
+            <label style="font-size:30px;color:darkgray">Vendor Information</label>
+            <div class="row">
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.VendorName)
+                    @Html.EditorFor(model => model.VendorName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.VendorName, "", new { @class = "error-message" })
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.VendorTelephoneNumber)
+                    @Html.EditorFor(model => model.VendorTelephoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.VendorTelephoneNumber, "", new { @class = "error-message" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.VendorMobileNumber)
+                    @Html.EditorFor(model => model.VendorMobileNumber, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.VendorMobileNumber, "", new { @class = "error-message" })
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.VendorEmailId)
+                    @Html.EditorFor(model => model.VendorEmailId, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.VendorEmailId, "", new { @class = "error-message" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label style="font-size:30px;color:darkgray">Dates</label>
+            <div class="row">
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.DateOfContract)
+                    @Html.EditorFor(model => model.DateOfContract, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.DateOfContract, "", new { @class = "error-message" })
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.StartDate)
+                    @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "error-message" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.EndDate)
+                    @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "error-message" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label style="font-size:30px;color:darkgray">Contract Details</label>
+            <div class="row">
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.OriginalAmount)
+                    @Html.EditorFor(model => model.OriginalAmount, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.OriginalAmount, "", new { @class = "error-message" })
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.RevisedAmount)
+                    @Html.EditorFor(model => model.RevisedAmount, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.RevisedAmount, "", new { @class = "error-message" })
+                </div>
+              
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.AmcType)
+                    @Html.DropDownListFor(model => model.AmcType, new SelectList(ViewBag.AmcTypeList), "Select the type of AMC", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.AmcType, "", new { @class = "error-message" })
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.BudgetType)
+                    @Html.DropDownListFor(model => model.BudgetType, new SelectList(ViewBag.BudgetTypeList), "Select the Budget", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.BudgetType, "", new { @class = "error-message" })
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.PaymentType)
+                    @Html.DropDownListFor(model => model.PaymentType, new SelectList(ViewBag.PaymentTypeList), "Select the type of Payment", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.PaymentType, "", new { @class = "error-message" })
+                </div>
+            
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.ServiceType)
+                    @Html.DropDownListFor(model => model.ServiceType, new SelectList(ViewBag.ServiceTypeList), "Yes/No", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ServiceType, "", new { @class = "error-message" })
+                </div>
+            </div>
+        </div>
+
+            
+
+        <div class="form-group text-center">
+            <button type="submit" class="btn btn-primary">Create</button>
+        </div>
+
+    }
+
+    <div class="text-center">
+        @Html.ActionLink("Back to List", "Index", new { @class = "btn btn-sm btn-primary" })
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+
+   
+</body>
+</html>
